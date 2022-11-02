@@ -9,5 +9,14 @@
 import Foundation
 
 class Person {
-    var id: String = "SecretID"
+    fileprivate var id: String = "SecretID"
+    func displayId() -> String {
+        id
+    }
+}
+
+class Management {
+    static func updateID(for person: Person, with newID: String) {
+        person.id = newID
+    }
 }

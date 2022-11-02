@@ -14,7 +14,11 @@ struct ContentView: View {
         Text("\(id)")
             .onAppear {
                 let person = Person()
-                self.id = person.id
+                self.id = person.displayId()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    Management.updateID(for: person, with: "New ID")
+                    self.id = person.displayId()
+                }
         }
     }
 }
